@@ -34,22 +34,52 @@ const App = () => {
       }
     };
     fetchUser();
-  }, [isAuthenticated]);
+  }, [setIsAuthenticated, setAdmin]);
 
   return (
     <Router>
-      <Sidebar />
-      <Routes>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/doctor/addnew" element={<AddNewDoctor />} />
-        <Route path="/admin/addnew" element={<AddNewAdmin />} />
-        <Route path="/messages" element={<Messages />} />
-        <Route path="/doctors" element={<Doctors />} />
-      </Routes>
-      <ToastContainer position="top-center" />
+      <div style={styles.appContainer}>
+        <Sidebar style={styles.sidebar} />
+        <main style={styles.mainContent}>
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/doctor/addnew" element={<AddNewDoctor />} />
+            <Route path="/admin/addnew" element={<AddNewAdmin />} />
+            <Route path="/messages" element={<Messages />} />
+            <Route path="/doctors" element={<Doctors />} />
+          </Routes>
+        </main>
+        <ToastContainer position="bottom-right" autoClose={3000} />
+      </div>
     </Router>
   );
+};
+
+const styles = {
+  appContainer: {
+    display: "flex",
+    height: "100vh",
+    overflow: "hidden",
+    backgroundColor: "#f4f4f9",
+  },
+  sidebar: {
+    width: "250px",
+    backgroundColor: "#343a40",
+    color: "#fff",
+    height: "100%",
+    position: "fixed",
+    top: 0,
+    left: 0,
+    display: "flex",
+    flexDirection: "column",
+    padding: "20px",
+  },
+  mainContent: {
+    marginLeft: "250px",
+    padding: "20px",
+    flex: 1,
+  },
 };
 
 export default App;
