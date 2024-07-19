@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
+import styles from "./ForgotPassword.module.css";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
@@ -30,10 +31,12 @@ const ForgotPassword = () => {
   };
 
   return (
-    <div className="auth-container">
-      <div className="auth-form">
-        <h2 className="auth-title">Forgot Password</h2>
-        <p className="auth-subtitle">Enter your email to reset your password</p>
+    <div className={styles.authContainer}>
+      <div className={styles.authForm}>
+        <h2 className={styles.authTitle}>Forgot Password</h2>
+        <p className={styles.authSubtitle}>
+          Enter your email to reset your password
+        </p>
         <form onSubmit={handleForgotPassword}>
           <input
             type="email"
@@ -42,13 +45,13 @@ const ForgotPassword = () => {
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-          <button type="submit" className="auth-button">
+          <button type="submit" className={styles.authButton}>
             Send Reset Link
           </button>
         </form>
-        <div className="auth-footer">
+        <div className={styles.authFooter}>
           <p>Remembered your password?</p>
-          <Link to="/login" className="auth-link">
+          <Link to="/login" className={styles.authLink}>
             Login
           </Link>
         </div>
