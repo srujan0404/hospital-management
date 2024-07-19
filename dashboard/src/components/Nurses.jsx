@@ -28,35 +28,39 @@ const Nurses = () => {
   }
 
   return (
-    <section className="page nurses">
-      <h1>Nurses</h1>
-      <div className="banner">
+    <section className="page nurses-page">
+      <h1 className="page-title">Registered Nurses</h1>
+      <div className="nurses-container">
         {nurses && nurses.length > 0 ? (
           nurses.map((nurse) => (
-            <div className="card" key={nurse.id}>
-              <img src={nurse.avatar && nurse.avatar.url} alt="nurse avatar" />
-              <h4>{`${nurse.firstName} ${nurse.lastName}`}</h4>
-              <div className="details">
-                <p>
+            <div className="nurse-card" key={nurse.id}>
+              <img
+                src={nurse.avatar?.url || "/defaultAvatar.jpg"}
+                alt="Nurse Avatar"
+                className="nurse-avatar"
+              />
+              <div className="nurse-details">
+                <h4 className="nurse-name">{`${nurse.firstName} ${nurse.lastName}`}</h4>
+                <p className="nurse-info">
                   Email: <span>{nurse.email}</span>
                 </p>
-                <p>
+                <p className="nurse-info">
                   Phone: <span>{nurse.phone}</span>
                 </p>
-                <p>
-                  DOB: <span>{nurse.dob.substring(0, 10)}</span>
+                <p className="nurse-info">
+                  DOB: <span>{new Date(nurse.dob).toLocaleDateString()}</span>
                 </p>
-                <p>
+                <p className="nurse-info">
                   Department: <span>{nurse.department}</span>
                 </p>
-                <p>
+                <p className="nurse-info">
                   Gender: <span>{nurse.gender}</span>
                 </p>
               </div>
             </div>
           ))
         ) : (
-          <h1>No Registered Nurses Found!</h1>
+          <h2 className="no-nurses-message">No Registered Nurses Found!</h2>
         )}
       </div>
     </section>
