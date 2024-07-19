@@ -17,7 +17,7 @@ const Messages = () => {
         );
         setMessages(data.messages);
       } catch (error) {
-        console.log(error.response.data.message);
+        toast.error(error.response.data.message);
       }
     };
     fetchMessages();
@@ -28,33 +28,33 @@ const Messages = () => {
   }
 
   return (
-    <section className="page messages">
-      <h1>Messages</h1>
-      <div className="banner">
+    <section className="messages-page">
+      <h1 className="page-title">Messages</h1>
+      <div className="messages-container">
         {messages && messages.length > 0 ? (
           messages.map((message) => (
-            <div className="card" key={message._id}>
-              <div className="details">
+            <div className="message-card" key={message._id}>
+              <div className="message-details">
                 <p>
-                  First Name: <span>{message.firstName}</span>
+                  <strong>First Name:</strong> <span>{message.firstName}</span>
                 </p>
                 <p>
-                  Last Name: <span>{message.lastName}</span>
+                  <strong>Last Name:</strong> <span>{message.lastName}</span>
                 </p>
                 <p>
-                  Email: <span>{message.email}</span>
+                  <strong>Email:</strong> <span>{message.email}</span>
                 </p>
                 <p>
-                  Phone: <span>{message.phone}</span>
+                  <strong>Phone:</strong> <span>{message.phone}</span>
                 </p>
                 <p>
-                  Message: <span>{message.message}</span>
+                  <strong>Message:</strong> <span>{message.message}</span>
                 </p>
               </div>
             </div>
           ))
         ) : (
-          <h1>No Messages!</h1>
+          <h2 className="no-messages-message">No Messages!</h2>
         )}
       </div>
     </section>

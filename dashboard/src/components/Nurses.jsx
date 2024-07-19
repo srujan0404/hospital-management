@@ -28,7 +28,7 @@ const Nurses = () => {
   }
 
   return (
-    <section className="page nurses-page">
+    <section className="nurses-page">
       <h1 className="page-title">Registered Nurses</h1>
       <div className="nurses-container">
         {nurses && nurses.length > 0 ? (
