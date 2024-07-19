@@ -7,6 +7,7 @@ import { Navigate } from "react-router-dom";
 const Messages = () => {
   const [messages, setMessages] = useState([]);
   const { isAuthenticated } = useContext(Context);
+
   useEffect(() => {
     const fetchMessages = async () => {
       try {
@@ -23,37 +24,35 @@ const Messages = () => {
   }, []);
 
   if (!isAuthenticated) {
-    return <Navigate to={"/login"} />;
+    return <Navigate to="/login" />;
   }
 
   return (
     <section className="page messages">
-      <h1>MESSAGE</h1>
+      <h1>Messages</h1>
       <div className="banner">
         {messages && messages.length > 0 ? (
-          messages.map((element) => {
-            return (
-              <div className="card" key={element._id}>
-                <div className="details">
-                  <p>
-                    First Name: <span>{element.firstName}</span>
-                  </p>
-                  <p>
-                    Last Name: <span>{element.lastName}</span>
-                  </p>
-                  <p>
-                    Email: <span>{element.email}</span>
-                  </p>
-                  <p>
-                    Phone: <span>{element.phone}</span>
-                  </p>
-                  <p>
-                    Message: <span>{element.message}</span>
-                  </p>
-                </div>
+          messages.map((message) => (
+            <div className="card" key={message._id}>
+              <div className="details">
+                <p>
+                  First Name: <span>{message.firstName}</span>
+                </p>
+                <p>
+                  Last Name: <span>{message.lastName}</span>
+                </p>
+                <p>
+                  Email: <span>{message.email}</span>
+                </p>
+                <p>
+                  Phone: <span>{message.phone}</span>
+                </p>
+                <p>
+                  Message: <span>{message.message}</span>
+                </p>
               </div>
-            );
-          })
+            </div>
+          ))
         ) : (
           <h1>No Messages!</h1>
         )}
