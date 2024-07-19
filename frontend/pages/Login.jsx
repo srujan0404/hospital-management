@@ -43,54 +43,48 @@ const Login = () => {
   }
 
   return (
-    <>
-      <div className="container form-component login-form">
-        <h2>Sign In</h2>
-        <p>Please Login To Continue</p>
-        <p>
+    <div className="auth-container">
+      <div className="auth-form">
+        <h2 className="auth-title">Sign In</h2>
+        <p className="auth-subtitle">Please Login To Continue</p>
+        <p className="auth-description">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat culpa
           voluptas expedita itaque ex, totam ad quod error?
         </p>
         <form onSubmit={handleLogin}>
           <input
-            type="text"
+            type="email"
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
           />
           <input
             type="password"
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
           <input
             type="password"
             placeholder="Confirm Password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
+            required
           />
-          <div
-            style={{
-              gap: "10px",
-              justifyContent: "flex-end",
-              flexDirection: "row",
-            }}
-          >
-            <p style={{ marginBottom: 0 }}>Not Registered?</p>
-            <Link
-              to={"/register"}
-              style={{ textDecoration: "none", color: "#271776ca" }}
-            >
+          <div className="auth-footer">
+            <p>Not Registered?</p>
+            <Link to="/register" className="auth-link">
               Register Now
             </Link>
           </div>
-          <div style={{ justifyContent: "center", alignItems: "center" }}>
-            <button type="submit">Login</button>
-          </div>
+          <button type="submit" className="auth-button">
+            Login
+          </button>
         </form>
       </div>
-    </>
+    </div>
   );
 };
 
