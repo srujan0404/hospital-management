@@ -4,7 +4,8 @@ import Biography from "../components/Biography";
 import MessageForm from "../components/MessageForm";
 import Departments from "../components/Departments";
 
-const Home = () => {
+function Home  ()
+ {
   return (
     <>
       <Hero

@@ -1,7 +1,7 @@
 import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import "./Departments.css"; // Import the CSS file for styling
+// import "./Departments.css"; // Import the CSS file for styling
 
 const Departments = () => {
   const departmentsArray = [
